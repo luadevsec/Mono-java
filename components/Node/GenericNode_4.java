@@ -1,3 +1,5 @@
+package Node;
+
 public class GenericNode_4<D> extends GenericNode_3<D>{
     
     private GenericNode_4<D> down;

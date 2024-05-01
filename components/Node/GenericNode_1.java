@@ -1,3 +1,5 @@
+package Node;
+
 public class GenericNode_1<D> {
     
     private GenericNode_1<D> next;
