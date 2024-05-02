@@ -38,6 +38,10 @@ public class Dynamic_array<Data> {
         }
         return -1;
     }
+
+    public int size() {
+        return list.length;
+    }
     
 
     public boolean contains(Data item) {
@@ -59,13 +63,19 @@ public class Dynamic_array<Data> {
         return Arrays.toString(list);
     }
 
+    public boolean isEmpty() {
+        return list.length == 0;
+    }
+
     public static void main(String[] args) {
         testAdd();
         testRemove();
         testIndexOf();
+        testSize();
         testContains();
         testGet();
         printable();
+        testIsEmpty();
 
         /* 
         // isso é bizarro, n sei o motivo de funcionar assim
@@ -76,42 +86,53 @@ public class Dynamic_array<Data> {
         */
     }
 
-    public static void testAdd() {
+    private static void testAdd() {
         Dynamic_array<String> list = new Dynamic_array<String>("1", "2", "3", "4", "5");
         list.add("6");
         String[] expected = {"1", "2", "3", "4", "5", "6"};
         System.out.println("Add Test: " + Arrays.equals(expected, list.get()));
     }
 
-    public static void testRemove() {
+    private static void testRemove() {
         Dynamic_array<String> list = new Dynamic_array<String>("1", "2", "3", "4", "5");
         list.remove(2);
         String[] expected = {"1", "2", "4", "5"};
         System.out.println("Remove Test: " + Arrays.equals(expected, list.get()));
     }
 
-    public static void testIndexOf() {
+    private static void testIndexOf() {
         Dynamic_array<String> list = new Dynamic_array<String>("1", "2", "3", "4", "5");
         int index = list.indexOf("4");
         System.out.println("IndexOf Test: " + (index == 3));
     }
 
-    public static void testContains() {
+    private static void testSize() {
+        Dynamic_array<String> list = new Dynamic_array<String>("1", "2", "3", "4", "5");
+        int size = list.size();
+        System.out.println("Size Test: " + (size == 5));
+    }
+    private static void testContains() {
         Dynamic_array<String> list = new Dynamic_array<String>("1", "2", "3", "4", "5");
         boolean contains = list.contains("4");
         System.out.println("Contains Test: " + contains);
     }
 
-    public static void testGet() {
+    private static void testGet() {
         Dynamic_array<String> list = new Dynamic_array<String>("1", "2", "3", "4", "5");
         String item = list.get(2);
         String[] expected = {"1", "2", "3", "4", "5"};
         System.out.println("Get Test: " + (item.equals("3") && Arrays.equals(list.get(), expected)));
     }
 
-    public static void printable(){
+    private static void printable(){
         Dynamic_array<String> list = new Dynamic_array<String>("1", "2", "3", "4", "5");
         String expcted = "[1, 2, 3, 4, 5]";
         System.out.println("Printable Test: " +  (list.toString().equals(expcted)));
+    }
+
+    private static void testIsEmpty() {
+        Dynamic_array<String> list = new Dynamic_array<String>();
+        boolean isEmpty = list.isEmpty();
+        System.out.println("IsEmpty Test: " + isEmpty);
     }
 }
